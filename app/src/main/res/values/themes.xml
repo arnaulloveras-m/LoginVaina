@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.LoginVaina" parent="Base.Theme.LoginVaina" />
+
+    <style name="SplashTheme" parent="Base.Theme.LoginVaina">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
 </resources>

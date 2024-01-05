@@ -7,16 +7,50 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.loginvaina.HomeFragment"
+        android:name="com.example.loginvaina.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_usersFragment"
-            app:destination="@id/usersFragment" />
+            android:id="@+id/action_homeFragment_to_registreFragment"
+            app:destination="@id/registreFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bebidaFragment"
+            app:destination="@id/bebidasFragment" />
     </fragment>
     <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.example.loginvaina.UsersFragment"
-        android:label="fragment_users"
-        tools:layout="@layout/fragment_users" />
+        android:id="@+id/registreFragment"
+        android:name="com.example.loginvaina.registre.RegistreFragment"
+        android:label="fragment_registre"
+        tools:layout="@layout/fragment_registre" >
+        <action
+            android:id="@+id/action_registreFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_registreFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bebidasFragment"
+        android:name="com.example.loginvaina.recyclerViews.beguda.BegudaFragment"
+        android:label="BebidaFragment" >
+        <action
+            android:id="@+id/action_bebidaFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_bebidaFragment_to_carritoFragment"
+            app:destination="@id/carritosFragment" />
+        <action
+            android:id="@+id/action_bebidaFragment_to_menjarFragment"
+            app:destination="@id/menjarsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carritosFragment"
+        android:name="com.example.loginvaina.recyclerViews.carrito.CarritoFragment"
+        android:label="fragment_carrito"
+        tools:layout="@layout/fragment_carrito" />
+    <fragment
+        android:id="@+id/menjarsFragment"
+        android:name="com.example.loginvaina.recyclerViews.menjar.MenjarFragment"
+        android:label="fragment_menjar"
+        tools:layout="@layout/fragment_menjar" />
 </navigation>

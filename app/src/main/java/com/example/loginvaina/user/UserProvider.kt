@@ -1,4 +1,4 @@
-package com.example.loginvaina
+package com.example.loginvaina.user
 
 class UserProvider {
 
@@ -29,6 +29,7 @@ class UserProvider {
                 usuari = "Si",
                 contrasenya = "no"
             )
+
         )
     }
 }

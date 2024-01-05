@@ -1,13 +1,15 @@
-package com.example.loginvaina
+package com.example.loginvaina.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.loginvaina.user.UserProvider
 
 class HomeViewModel : ViewModel() {
 
     private val _nombreUsuario = MutableLiveData<String>()
     private val _contrasenia =  MutableLiveData<String>()
+
 
     val nombreUsuario: LiveData<String>
         get() = _nombreUsuario
@@ -41,18 +43,7 @@ class HomeViewModel : ViewModel() {
         _contrasenya=currentQuote.contrasenya
     }
 
-    fun iniciarSessio(usuari: String, contrasenila: String) :Boolean {
-        var contador = 0;
-        while (contador < UserProvider.quotes.size) {
-            if (usuari == UserProvider.quotes[contador].usuari &&
-                contrasenila == UserProvider.quotes[contador].contrasenya
-            ) {
-                return true
-            } else {
-                contador++
-            }
 
-        }
-        return false
-    }
+
+
 }
