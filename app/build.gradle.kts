@@ -61,4 +61,7 @@ dependencies {
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
 }

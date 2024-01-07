@@ -44,9 +44,13 @@ class RegistreViewModel : ViewModel() {
 
         llistaUsuaris.add(nouUsuari)
 
+        UserProvider.quotes.toMutableList().add(nouUsuari)
+
         llistaUsuaris.forEach{
             println("Usu: ${it.usuari}, cont: ${it.contrasenya}")
         }
+
+        println(UserProvider.quotes.toMutableList())
 
         return true
     }

@@ -13,7 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.loginvaina.R
 import com.example.loginvaina.SharedViewModel
 import com.example.loginvaina.user.UserModel
+import com.example.loginvaina.user.UserProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlin.math.log
 
 class HomeFragment : Fragment() {
 
@@ -22,18 +24,22 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
 
-    private lateinit var laLlista: MutableList<UserModel>
+    private var laLlista = UserProvider.quotes.toMutableList()
+
+    private lateinit var sharedViewModel: SharedViewModel
 
 
     private fun iniciarSessio(usuari: String, contrasenila: String) :Boolean {
-        println(laLlista)
         var contador = 0
         while (contador < laLlista.size) {
             if (usuari == laLlista[contador].usuari &&
                 contrasenila == laLlista[contador].contrasenya
             ) {
+                println("${laLlista[contador].usuari}, ${laLlista[contador].contrasenya}")
                 return true
             } else {
+                println("${laLlista[contador].usuari}, ${laLlista[contador].contrasenya}")
+
                 contador++
             }
 
@@ -49,7 +55,6 @@ class HomeFragment : Fragment() {
         val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.visibility = View.GONE
 
-        laLlista = mutableListOf()
         binding = FragmentHomeBinding.inflate(inflater)
 
         binding.editTextText.addTextChangedListener {
@@ -61,14 +66,21 @@ class HomeFragment : Fragment() {
         }
 
         binding.button.setOnClickListener {
+            println(UserProvider.quotes.toMutableList())
+            println(laLlista)
 
             val share_model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
+            share_model.dades(
+                viewModel.nombreUsuario.value.toString(),
+                viewModel.contrasenia.value.toString()
+            )
+
             iniciarSessio(viewModel.nombreUsuario.value.toString(), viewModel.contrasenia.value.toString())
+            if (iniciarSessio(viewModel.nombreUsuario.value.toString(), viewModel.contrasenia.value.toString())) {
 
-            share_model.dades(viewModel.nombreUsuario.value.toString(), viewModel.contrasenia.value.toString())
-
-            findNavController().navigate(R.id.action_homeFragment_to_bebidaFragment)
+                findNavController().navigate(R.id.action_homeFragment_to_bebidaFragment)
+            }
 
         }
 
