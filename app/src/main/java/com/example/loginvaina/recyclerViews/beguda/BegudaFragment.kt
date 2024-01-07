@@ -6,16 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.loginvaina.R
 import com.example.loginvaina.databinding.FragmentBegudaBinding
-import com.example.loginvaina.databinding.FragmentHomeBinding
 import com.example.loginvaina.recyclerViews.beguda.adapter.BegudaAdapter
 import com.example.loginvaina.recyclerViews.beguda.adapter.BegudaViewHolder
-import com.example.loginvaina.recyclerViews.carrito.Carrito
-import com.example.loginvaina.recyclerViews.carrito.CarritoProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BegudaFragment : Fragment() {
@@ -43,8 +39,12 @@ class BegudaFragment : Fragment() {
     }
 
     private fun initRecyclerView(){
-        binding.recyclerViewCafeteria.layoutManager = LinearLayoutManager(this.context)
+        val manager = LinearLayoutManager(this.context)
+        val decoration = DividerItemDecoration(this.context, manager.orientation)
+        binding.recyclerViewCafeteria.layoutManager = manager
         binding.recyclerViewCafeteria.adapter = BegudaAdapter(BegudaProvider.begudaList)
+
+        binding.recyclerViewCafeteria.addItemDecoration(decoration)
     }
 
 }

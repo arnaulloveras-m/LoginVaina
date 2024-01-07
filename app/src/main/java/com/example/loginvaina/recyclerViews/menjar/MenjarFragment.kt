@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.loginvaina.R
 import com.example.loginvaina.databinding.FragmentBegudaBinding
@@ -31,7 +32,11 @@ class MenjarFragment : Fragment() {
     }
 
     private fun initRecyclerView(){
-        binding.recyclerViewCafeteria.layoutManager = LinearLayoutManager(this.context)
+        val manager = LinearLayoutManager(this.context)
+        val decoration = DividerItemDecoration(this.context, manager.orientation)
+        binding.recyclerViewCafeteria.layoutManager = manager
         binding.recyclerViewCafeteria.adapter = MenjarAdapter(MenjarProvider.menjarList)
+
+        binding.recyclerViewCafeteria.addItemDecoration(decoration)
     }
 }
